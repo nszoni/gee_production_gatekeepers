@@ -1,0 +1,29 @@
+gee_snowflake:
+  target: jaffle
+  outputs:
+    jaffle:
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      client_session_keep_alive: false
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      query_tag: dbt
+      role: TRANSFORMER
+      schema: DBT_SONNY
+      threads: 4
+      type: snowflake
+      user: sonny
+      warehouse: TRANSFORMING
+
+gee_bigquery:
+  target: jaffle
+  outputs:
+    jaffle:
+      dataset: dbt_sonny
+      location: EU
+      method: oauth
+      priority: interactive
+      project: "{{ env_var('GOOGLE_PROJECT') }}"
+      retries: 1
+      threads: 8
+      timeout_seconds: 600
+      type: bigquery

@@ -1,9 +1,9 @@
-name: 'jaffle_shop'
+name: 'gee_bigquery'
 
 config-version: 2
 version: '0.1'
 
-profile: 'jaffle_shop'
+profile: 'gee_bigquery'
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
@@ -20,7 +20,10 @@ clean-targets:
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
-  jaffle_shop:
-      materialized: table
+  gee_bigquery:
       staging:
         materialized: view
+        tags: ['staging']
+      mart:
+        materialized: table
+        tags: ['mart']
