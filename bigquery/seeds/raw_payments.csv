@@ -1,4 +1,4 @@
-id,order_id,payment_method,-amount
+id,order_id,payment_method,amount
 1,1,credit_card,-1000
 2,2,credit_card,-2000
 3,3,coupon,-100
