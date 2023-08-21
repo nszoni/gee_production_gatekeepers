@@ -45,7 +45,7 @@ final as (
         {% endfor -%}
 
         order_payments.total_amount as amount,
-        -order_payments.avg_amount as avg_amount
+        order_payments.avg_amount as avg_amount
 
     from orders
 
