@@ -21,7 +21,8 @@ order_payments as (
         sum(case when payment_method = '{{ payment_method }}' then amount else 0 end) as {{ payment_method }}_amount,
         {% endfor -%}
 
-        sum(amount) as total_amount
+        sum(amount) as total_amount,
+        avg(amount) as avg_amount
 
     from payments
 
@@ -43,7 +44,8 @@ final as (
 
         {% endfor -%}
 
-        order_payments.total_amount as amount
+        order_payments.total_amount as amount,
+        order_payments.avg_amount
 
     from orders
 
